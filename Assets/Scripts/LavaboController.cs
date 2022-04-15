@@ -21,7 +21,7 @@ public class LavaboController : MonoBehaviour
     private void Start()
     {
         animatorHands.speed = 0;
-        animatorHands.SetBool("AnimationCanRun", true);
+        //animatorHands.SetBool("AnimationCanRun", true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,8 +34,8 @@ public class LavaboController : MonoBehaviour
                 meshRightHand.enabled = false;
                 meshLeftHand.enabled = false;
                 CheckVelocity();
-                //animatorHands.SetBool("AnimationCanRun", true);
                 animatorHands.speed = 1;
+                animatorHands.gameObject.SetActive(true);
             }
         }
         else if(other.gameObject.name.EndsWith("b_l_middle1"))
@@ -46,8 +46,8 @@ public class LavaboController : MonoBehaviour
                 meshRightHand.enabled = false;
                 meshLeftHand.enabled = false;
                 CheckVelocity();
-                //animatorHands.SetBool("AnimationCanRun", true);
                 animatorHands.speed = 1;
+                animatorHands.gameObject.SetActive(true);
             }
         }
     }
@@ -60,8 +60,8 @@ public class LavaboController : MonoBehaviour
             {
                 meshRightHand.enabled = true;
                 meshLeftHand.enabled = true;
-                //animatorHands.SetBool("AnimationCanRun", false);
                 animatorHands.speed = 0;
+                animatorHands.gameObject.SetActive(false);
             }
             hands--;
             CancelInvoke(nameof(CheckVelocity));
@@ -74,13 +74,15 @@ public class LavaboController : MonoBehaviour
         {
             meshRightHand.enabled = false;
             meshLeftHand.enabled = false;
+            animatorHands.speed = 1;
+            animatorHands.gameObject.SetActive(true);
         }
         else
         {
             meshRightHand.enabled = true;
             meshLeftHand.enabled = true;
-            //animatorHands.SetBool("AnimationCanRun", false);
-            animatorHands.speed = 1;
+            animatorHands.speed = 0;
+            animatorHands.gameObject.SetActive(false);
         }
 
         if(hands == 2)Invoke(nameof(CheckVelocity), 0.1f);
