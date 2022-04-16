@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrazaleteController : MonoBehaviour
+public class PulxiosimetroController : MonoBehaviour
 {
     [Header("Required Components")]
-    public GameObject brazaleteFalsa;
+    public GameObject pulxiosimetroInTheBody;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.StartsWith("Brazalete"))
+        if (other.gameObject.name.StartsWith("Pulsioximetro"))
         {
             Destroy(other.gameObject.transform.root.gameObject);
-            brazaleteFalsa.SetActive(true);
+            pulxiosimetroInTheBody.SetActive(true);
+            Destroy(this.gameObject);
         }
         else print(other.gameObject.name);
     }
-
 }

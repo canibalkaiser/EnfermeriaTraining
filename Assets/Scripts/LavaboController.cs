@@ -12,6 +12,7 @@ public class LavaboController : MonoBehaviour
     public HVRTrackedController leftVelocity;
     public Animator animatorHands;
     public BoxCollider thisCollider;
+    public GameObject water;
 
     [Header("Configurable Variables")]
     public float velocityRequired;
@@ -37,7 +38,8 @@ public class LavaboController : MonoBehaviour
                 CheckVelocity();
                 animatorHands.speed = 1;
                 animatorHands.gameObject.SetActive(true);
-                thisCollider.size = new Vector3(1.5f, 1.5f, 1.5f);
+                thisCollider.size = new Vector3(2, 2, 2);
+                water.SetActive(true);
             }
         }
         else if(other.gameObject.name.EndsWith("b_l_middle1"))
@@ -50,7 +52,8 @@ public class LavaboController : MonoBehaviour
                 CheckVelocity();
                 animatorHands.speed = 1;
                 animatorHands.gameObject.SetActive(true);
-                thisCollider.size = new Vector3(1.5f, 1.5f, 1.5f);
+                thisCollider.size = new Vector3(2, 2, 2);
+                water.SetActive(true);
             }
         }
     }
@@ -66,6 +69,7 @@ public class LavaboController : MonoBehaviour
                 animatorHands.speed = 0;
                 animatorHands.gameObject.SetActive(false);
                 thisCollider.size = new Vector3(1, 1, 1);
+                water.SetActive(false);
             }
             hands--;
             CancelInvoke(nameof(CheckVelocity));
@@ -80,7 +84,8 @@ public class LavaboController : MonoBehaviour
             meshLeftHand.enabled = false;
             animatorHands.speed = 1;
             animatorHands.gameObject.SetActive(true);
-            thisCollider.size = new Vector3(1.5f, 1.5f, 1.5f);
+            thisCollider.size = new Vector3(2, 2, 2);
+            water.SetActive(true);
         }
         else
         {
@@ -89,6 +94,7 @@ public class LavaboController : MonoBehaviour
             animatorHands.speed = 0;
             animatorHands.gameObject.SetActive(false);
             thisCollider.size = new Vector3(1, 1, 1);
+            water.SetActive(false);
         }
 
         if(hands == 2)Invoke(nameof(CheckVelocity), 0.1f);
