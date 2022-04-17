@@ -40,6 +40,7 @@ public class LavaboController : MonoBehaviour
                 animatorHands.gameObject.SetActive(true);
                 thisCollider.size = new Vector3(2, 2, 2);
                 water.SetActive(true);
+                FindObjectOfType<MigueSoundManager>().waterSource.Play();
             }
         }
         else if(other.gameObject.name.EndsWith("b_l_middle1"))
@@ -54,6 +55,7 @@ public class LavaboController : MonoBehaviour
                 animatorHands.gameObject.SetActive(true);
                 thisCollider.size = new Vector3(2, 2, 2);
                 water.SetActive(true);
+                FindObjectOfType<MigueSoundManager>().waterSource.Play();
             }
         }
     }
@@ -70,6 +72,7 @@ public class LavaboController : MonoBehaviour
                 animatorHands.gameObject.SetActive(false);
                 thisCollider.size = new Vector3(1, 1, 1);
                 water.SetActive(false);
+                FindObjectOfType<MigueSoundManager>().waterSource.Stop();
             }
             hands--;
             CancelInvoke(nameof(CheckVelocity));
@@ -86,6 +89,7 @@ public class LavaboController : MonoBehaviour
             animatorHands.gameObject.SetActive(true);
             thisCollider.size = new Vector3(2, 2, 2);
             water.SetActive(true);
+            FindObjectOfType<MigueSoundManager>().waterSource.Play();
         }
         else
         {
@@ -95,6 +99,7 @@ public class LavaboController : MonoBehaviour
             animatorHands.gameObject.SetActive(false);
             thisCollider.size = new Vector3(1, 1, 1);
             water.SetActive(false);
+            FindObjectOfType<MigueSoundManager>().waterSource.Stop();
         }
 
         if(hands == 2)Invoke(nameof(CheckVelocity), 0.1f);
